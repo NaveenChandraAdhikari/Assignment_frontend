@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../App.css'
 
 function AddCourse() {
   const [title, setTitle] = useState('');
@@ -32,27 +33,31 @@ function AddCourse() {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="add-course-form" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Course title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        className="input-field"
       />
       <input
         type="text"
         placeholder="Course code"
         value={code}
         onChange={(e) => setCode(e.target.value)}
+        className="input-field"
       />
       <textarea
         placeholder="Course description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        className="input-field"
       />
-      <button type="submit">Add course</button>
+      <button type="submit" className="add-course-button">Add course</button>
     </form>
   );
+  
 }
 
 export default AddCourse;

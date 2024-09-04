@@ -41,6 +41,7 @@ function CourseList() {
     try {
       const response = await fetch(`http://localhost:8080/api/courses/${id}`);
       const data = await response.json();
+      // console.log(data+"hi hi ")
       setSelectedCourse(data);
     } catch (error) {
       console.error('Error fetching course details:', error);
@@ -48,9 +49,9 @@ function CourseList() {
   };
 
   return (
-    <div>
-      <button onClick={fetchCourses}>List courses</button>
-      <table>
+    <div className="course-list-container">
+      <button className="list-courses-button" onClick={fetchCourses}>List courses</button>
+      <table className="course-table">
         <thead>
           <tr>
             <th>Course Title</th>
@@ -64,14 +65,14 @@ function CourseList() {
               <td>{course.title}</td>
               <td>{course.code}</td>
               <td>
-                <button onClick={() => viewCourseDetails(course.id)}>View</button>
-                <button onClick={() => handleDelete(course.id)}>Delete</button>
+                <button className="action-button view-button" onClick={() => viewCourseDetails(course.id)}>🔍</button>
+                <button className="action-button delete-button" onClick={() => handleDelete(course.id)}>🗑️</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div>
+      <div className="pagination">
         <button onClick={() => setPage(prev => Math.max(prev - 1, 0))} disabled={page === 0}>
           Previous
         </button>
